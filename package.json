@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/SullyvanOgawa/AULA1-CORRETA-PPI-EAD/issues"
   },
-  "homepage": "https://github.com/SullyvanOgawa/AULA1-CORRETA-PPI-EAD#readme"
+  "homepage": "https://github.com/SullyvanOgawa/AULA1-CORRETA-PPI-EAD#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }
