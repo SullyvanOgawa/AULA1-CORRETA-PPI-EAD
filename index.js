@@ -29,16 +29,16 @@ app.use(express.static('views/public'));
 app.post("/login", (requisicao, resposta) => {
     //precisamos extrair os dados da requisição
     //lembrando que os dados estão armazenados no corpo da requisição
-    const usuario = requisicao.usuario;
-    const senha = requisicao.senha;
+    const usuario = requisicao.body.usuario;
+    const senha = requisicao.body.senha;
 
-    if (usuario === 'admin' && senha === 123) {
+    if (usuario === 'admin' && senha === '123') {
         //atualizar a sessão do usuário
         requisicao.session.usuarioLogado = true;
         resposta.redirect('/menu.html');
     }
     else{
-        resposta.redirect('/public/login.html');
+        resposta.redirect('/login.html');
     }
 });
 
