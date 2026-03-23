@@ -1,0 +1,21 @@
+{
+  "name": "aula1-correta-ppi-ead",
+  "version": "1.0.0",
+  "description": "Projeto desenvolvido na primeira aula ao vivo disciplina de PPI (node mais express)",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SullyvanOgawa/AULA1-CORRETA-PPI-EAD.git"
+  },
+  "author": "Sullyvan C N A Ogawa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SullyvanOgawa/AULA1-CORRETA-PPI-EAD/issues"
+  },
+  "homepage": "https://github.com/SullyvanOgawa/AULA1-CORRETA-PPI-EAD#readme"
+}
