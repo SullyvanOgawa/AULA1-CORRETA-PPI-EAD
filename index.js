@@ -33,7 +33,7 @@ app.post("/login", (requisicao, resposta) => {
     const senha = requisicao.body.senha;
 
     if (usuario === 'admin' && senha === '123') {
-        //atualizar a sessão do usuário
+        //Somente quando o usuário === admin e senha === 123, é inserido na requisição que o usuário estálogado - vamos atualizar a sessão do usuário
         requisicao.session.usuarioLogado = true;
         resposta.redirect('/menu.html');
     }
@@ -44,6 +44,12 @@ app.post("/login", (requisicao, resposta) => {
 
 app.get("/login", (requisicao, resposta) => {
     resposta.redirect('/public/login.html');
+});
+
+app.get("/logout", (requisicao, resposta) => {
+    //vamos limpar a sessão do usuário
+    requisicao.session.destroy(); //aqui ele encerra a sessão do usuário
+    resposta.redirect('/login.html'); // aqui ele redireciona para a tela de login
 });
 
 app.use(autenticar, express.static('views/private'));
