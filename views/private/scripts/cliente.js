@@ -44,6 +44,34 @@ function mostrarMensagem(tipo ="sucess", mensagem = "Mensagem Padrão") {
     
 }
 
+
+function buscarClientes(){
+    fech(urlBase + "/cliente", {
+        // parametrizando a chamada
+        method: "GET"
+    })
+    .then((resposta) => {
+        return resposta.json();
+    })
+    .then((conteudoJSON) => {
+        // Verifica se o status é verdadeiro
+        if(conteudoJSON.status){
+            //verifica se o conteudo JSON trás as lista de clientes
+            if(conteudoJSON.clientes.length == 0){
+                const espacoTabela
+            }
+
+        }
+        else{
+            mostrarMensagem("danger", conteudoJSON.mensagem);
+        }
+    })
+    .catch((erro) => {
+        mostrarMensagem("danger", "Erro ao buscar a mensagem" + erro);
+    });
+
+}
+
 obterCidades();
 mostrarMensagem();
 
