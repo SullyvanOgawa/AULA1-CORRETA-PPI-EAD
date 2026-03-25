@@ -45,6 +45,7 @@ function mostrarMensagem(tipo ="sucess", mensagem = "Mensagem Padrão") {
 }
 
 
+
 function buscarClientes(){
     fech(urlBase + "/cliente", {
         // parametrizando a chamada
@@ -58,7 +59,13 @@ function buscarClientes(){
         if(conteudoJSON.status){
             //verifica se o conteudo JSON trás as lista de clientes
             if(conteudoJSON.clientes.length == 0){
-                const espacoTabela
+                const espacoTabela = document.getElementById("espacoTabela");
+                espacoTabela.innerHTML = "";
+                const tabela = document.createElement("table");
+                tabela.className = "table table-striped table hover";
+                
+                
+                
             }
 
         }
