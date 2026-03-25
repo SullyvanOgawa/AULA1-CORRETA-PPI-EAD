@@ -63,7 +63,24 @@ function buscarClientes(){
                 espacoTabela.innerHTML = "";
                 const tabela = document.createElement("table");
                 tabela.className = "table table-striped table hover";
-                
+
+                const cabecalhoTabela = document.createElement("thead");
+                cabecalhoTabela.innerHTML = `
+                    <tr>
+                        <th>Id</th>
+                        <th>CPF</th>
+                        <th>Nome</th>
+                        <th>Endereco</th>
+                        <th>Bairro</th>
+                        <th>Cidade/UF</th>
+                        <th>Telefone</th>
+                        <th>Email</th>    
+                    </tr>
+                `;
+
+                tabela.appendChild(cabecalhoTabela);
+
+                const corpoTabela = document.createElement("tbody");
                 
                 
             }
