@@ -216,11 +216,10 @@ function excluirCliente(id){
     });
 }
 
-function atualizarCliente(){
+function atualizarCliente(id){
     const formulario = document.getElementById("formCliente");
     if(formulario.checkValidity()){
         const cliente = {
-            id: document.getElementById("id").value,
             cpf: document.getElementById("cpf").value,
             nome: document.getElementById("nome").value,
             endereco: document.getElementById("endereco").value,
@@ -231,7 +230,7 @@ function atualizarCliente(){
             telefone: document.getElementById("telefone").value,
             email: document.getElementById("email").value
         }
-        fetch(urlBase + "/cliente", {
+        fetch(urlBase + "/cliente" + id, {
             method: "PUT",
             headers: {
                 "content-Type": "application/json"
