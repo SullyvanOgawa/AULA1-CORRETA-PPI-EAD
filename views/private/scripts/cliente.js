@@ -216,10 +216,11 @@ function excluirCliente(id){
     });
 }
 
-function atualizarCliente(id){
+function atualizarCliente(){
     const formulario = document.getElementById("formCliente");
     if(formulario.checkValidity()){
         const cliente = {
+            id: document.getElementById("id").value,
             cpf: document.getElementById("cpf").value,
             nome: document.getElementById("nome").value,
             endereco: document.getElementById("endereco").value,
@@ -230,7 +231,7 @@ function atualizarCliente(id){
             telefone: document.getElementById("telefone").value,
             email: document.getElementById("email").value
         }
-        fetch(urlBase + "/cliente" + id, {
+        fetch(urlBase + "/cliente/" + cliente.id, {
             method: "PUT",
             headers: {
                 "content-Type": "application/json"
@@ -284,16 +285,20 @@ buscarClientes();
 // Neste ponto eu estou pegando o botão cadastrar do html cadastro.html, traduzindo, a minha contante botaoCadastrar vai receber o (id) identificador do botão cadastrar da tela cadastro.html.
 const botaoCadastrar = document.getElementById("cadastrar");
 botaoCadastrar.onclick = cadastrarCliente; // É errado chamar a função cadastrarCliente(), aqui deve ser associado ao método click do botão a função cadastrarCliente.
-const botaoExcluir = document.getElementById("excluir");
-botaoExcluir.onclick = function () {
-    const id = document.getElementById("id").value;
-    if(id){
-        excluirCliente(id);
-    } else {
-        mostrarMensagem("warning", "Selecione um cliente primeiro!");
-    }
-};
-
 const botaoAtualizar = document.getElementById("atualizar");
 botaoAtualizar.onclick = atualizarCliente;
-// Aula - 1:08:34
+
+const botaoExcluir = document.getElementById("excluir");
+botaoExcluir.onclick = function () {
+    if (confirm("Tem certeza que deseja excluir o cliente?")) {
+        const id = document.getElementById("id").value;
+        if(id){
+            excluirCliente(id);
+        } else {
+            mostrarMensagem("warning", "Selecione um cliente primeiro!");
+        }
+    }
+}
+
+
+
