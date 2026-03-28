@@ -5,6 +5,9 @@ import session from 'express-session';
 const host = '0.0.0.0';
 const port = 8000;
 const app = express();
+
+//O http é estateless, ou seja, ele não distingue usuários.
+// Para dar ao http a capacidade de identificar usuários, precisamos utilizar cookies de sessão. O express-session tem a capacidade de gerar sessões, cada sessão pertencerá a um único usuário.
 app.use(session({
     secret: '123456',
     resave: false,
@@ -15,13 +18,13 @@ app.use(session({
         maxAge: 1000 * 60 * 15 // 15 minutos
     }
 }));
-//o http é estateless, ou seja, ele não distingue usuários.
-// para dar ao http acapacidade de identificar usuários, precisamos utilizar cookies de sessão.
-// o express-session tem a capacidade de gerar sessões, cada sessão pertencerá a um único usuário
-//escolher a biblioteca que ira processar os parâmetros da requisição, são duas uma querystring e a outra qs
-// querystring => extended = false
-// qs = extended => true
-app.use(express.urlencoded({ extended: true }));
+
+// app.use(express.urlencoded({ extended: true})); É um middleware que serve para interpretar dados enviados em formulários HTML (aqueles com application/x-www-form-urlencoded). Ou seja: ele pega os dados do formulário e transforma em um objeto JavaScript acessível em requisicao.body. 
+
+// express.urlencoded = Função do Express que cria um middleware para ler dados do corpo da requisição (body).
+
+// {extended: true} = Essa opção define como os dados serão interpretados ela usa uma biblioteca mais avançada (qs) → permite objetos complexos = user[name]=João&user[age]=20. Em outra palavras quando o Extended for igual a true ele consegue interpretar objetos e arrays.
+app.use(express.urlencoded({extended: true}));
 
 // todo o conteúdo do repositório views/public estará disponível na raiz do servidor.
 app.use(express.static('views/public'));
